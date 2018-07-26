@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -36,17 +37,17 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="605.0">
                      <children>
                         <Label layoutX="85.0" layoutY="51.0" text="Count of letters to Generate" />
-                        <Label layoutX="85.0" layoutY="81.0" text="Randomized" />
-                        <Label layoutX="84.0" layoutY="111.0" text="Space bettwen letters" />
-                        <Label layoutX="85.0" layoutY="146.0" text="UpperCase letters" />
-                        <Label layoutX="87.0" layoutY="176.0" text="Letters only" />
+                        <Label layoutX="86.0" layoutY="103.0" text="Randomized" />
+                        <Label layoutX="85.0" layoutY="129.0" text="Space bettwen letters" />
+                        <Label layoutX="85.0" layoutY="155.0" text="UpperCase letters" />
+                        <Label layoutX="87.0" layoutY="185.0" text="Letters only" />
                         <Label layoutX="84.0" layoutY="263.0" text="Language selector" />
-                        <CheckBox layoutX="348.0" layoutY="81.0" mnemonicParsing="false" />
-                        <CheckBox layoutX="348.0" layoutY="111.0" mnemonicParsing="false" />
-                        <CheckBox layoutX="348.0" layoutY="146.0" mnemonicParsing="false" />
-                        <CheckBox layoutX="348.0" layoutY="176.0" mnemonicParsing="false" />
-                        <CheckBox layoutX="348.0" layoutY="51.0" mnemonicParsing="false" />
+                        <CheckBox fx:id="randomizedLetters" layoutX="348.0" layoutY="102.0" mnemonicParsing="false" />
+                        <CheckBox layoutX="348.0" layoutY="128.0" mnemonicParsing="false" />
+                        <CheckBox layoutX="348.0" layoutY="154.0" mnemonicParsing="false" />
+                        <CheckBox layoutX="348.0" layoutY="184.0" mnemonicParsing="false" />
                         <ComboBox id="language" layoutX="273.0" layoutY="258.0" prefHeight="27.0" prefWidth="97.0" promptText="English" />
+                        <Slider fx:id="countLetters" layoutX="302.0" layoutY="49.0" minorTickCount="10" prefHeight="33.0" prefWidth="166.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="64.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -87,18 +88,18 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Phone, Cars">
+            <Tab text="Phone, Cards">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="113.0" layoutY="60.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="113.0" layoutY="93.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="310.0" layoutY="135.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="311.0" layoutY="93.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="311.0" layoutY="56.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="113.0" layoutY="135.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="113.0" layoutY="178.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="310.0" layoutY="178.0" mnemonicParsing="false" text="Button" />
+                        <Button fx:id="ukPhone" layoutX="109.0" layoutY="26.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="157.0" text="UK phone &#10;number &#10;Exampels" textAlignment="CENTER" />
+                        <Button fx:id="gmPhone" layoutX="109.0" layoutY="93.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="157.0" text="German phone &#10;number &#10;Exampels" textAlignment="CENTER" />
+                        <Button fx:id="discovercard" layoutX="310.0" layoutY="163.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="157.0" text="Discover card &#10;number &#10;Exampels" textAlignment="CENTER" />
+                        <Button fx:id="mastercard" layoutX="311.0" layoutY="93.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="157.0" text="MasterCard&#10;number &#10;Exampels" textAlignment="CENTER" />
+                        <Button fx:id="visacard" layoutX="311.0" layoutY="26.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="157.0" text="Visa card &#10;number &#10;Exampels" textAlignment="CENTER" />
+                        <Button fx:id="canPhone" layoutX="109.0" layoutY="163.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="157.0" text="Canada phone &#10;number &#10;Exampels" textAlignment="CENTER" />
+                        <Button fx:id="usPhone" layoutX="109.0" layoutY="236.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="157.0" text="US phone &#10;number &#10;Exampels" textAlignment="CENTER" />
+                        <Button fx:id="americanexpress" layoutX="310.0" layoutY="236.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="157.0" text="American Express &#10;card number&#10;Exampels" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
                </content>
@@ -107,12 +108,12 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="74.0" layoutY="77.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="206.0" layoutY="120.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="206.0" layoutY="77.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="325.0" layoutY="83.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="208.0" layoutY="205.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="207.0" layoutY="163.0" mnemonicParsing="false" text="Button" />
+                        <Button layoutX="79.0" layoutY="47.0" mnemonicParsing="false" text="Сorrect email &#10;Example" textAlignment="CENTER" />
+                        <Button layoutX="215.0" layoutY="121.0" mnemonicParsing="false" text="Numbers in email&#10;Examples" textAlignment="CENTER" />
+                        <Button layoutX="214.0" layoutY="47.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="128.0" text="Popular domain&#10;name&#10;Examples" textAlignment="CENTER" />
+                        <Button layoutX="376.0" layoutY="47.0" mnemonicParsing="false" text="Incorrect email&#10;Examples" textAlignment="CENTER" />
+                        <Button layoutX="215.0" layoutY="246.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="127.0" text="Special email&#10;Examples" textAlignment="CENTER" />
+                        <Button layoutX="214.0" layoutY="174.0" mnemonicParsing="false" text="Email &#10;Examples to &#10;the same account" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
                </content>
@@ -121,13 +122,13 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <DatePicker layoutX="50.0" layoutY="98.0" />
-                        <Button layoutX="343.0" layoutY="77.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="454.0" layoutY="149.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="343.0" layoutY="111.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="453.0" layoutY="111.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="453.0" layoutY="74.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="343.0" layoutY="149.0" mnemonicParsing="false" text="Button" />
+                        <DatePicker layoutX="50.0" layoutY="98.0" showWeekNumbers="true" />
+                        <Button layoutX="343.0" layoutY="77.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="99.0" text="MM/dd/yyyy" />
+                        <Button layoutX="454.0" layoutY="149.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="97.0" text="MM.dd.yyyy" />
+                        <Button layoutX="343.0" layoutY="111.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="100.0" text="MM-dd-yyyy" />
+                        <Button layoutX="453.0" layoutY="111.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="98.0" text="dd.MM.yyyy" />
+                        <Button layoutX="453.0" layoutY="74.0" mnemonicParsing="false" text="dd-MM-yyyy" />
+                        <Button layoutX="343.0" layoutY="149.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="101.0" text="dd/MM/yyyy" />
                         <Label layoutX="60.0" layoutY="40.0" text="Step 1: Please select date to display" />
                         <Label layoutX="319.0" layoutY="40.0" text="Step 2: Quick buttons for date format" />
                      </children>
@@ -136,6 +137,6 @@
             </Tab>
         </tabs>
       </TabPane>
-      <TextField fx:id="showfield" />
+      <TextField fx:id="showfield" text="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" />
    </children>
 </GridPane>
