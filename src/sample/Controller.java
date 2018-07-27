@@ -1,6 +1,12 @@
 package sample;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -8,10 +14,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.util.StringConverter;
 
 public class Controller {
     @FXML
@@ -21,16 +25,16 @@ public class Controller {
     private URL location;
 
     @FXML
-    private Slider countLetters;
-
-    @FXML
-    private Button canPhone;
+    private DatePicker date;
 
     @FXML
     private Button fifteenLettersW;
 
     @FXML
     private Button FifteenLetters;
+
+    @FXML
+    private Button numberiemail;
 
     @FXML
     private Button thouthadNumbers;
@@ -42,10 +46,10 @@ public class Controller {
     private Button mastercard;
 
     @FXML
-    private Button visacard;
+    private Button two;
 
     @FXML
-    private Button americanexpress;
+    private Button three;
 
     @FXML
     private Button discovercard;
@@ -57,16 +61,19 @@ public class Controller {
     private Button gmPhone;
 
     @FXML
-    private TextField showfield;
+    private Button four;
+
+    @FXML
+    private Slider countLetters;
 
     @FXML
     private Button fifteenNumbers;
 
     @FXML
-    private Button fifteenNumberSpace;
+    private Button sqlQueryButton;
 
     @FXML
-    private Button sqlQueryButton;
+    private Button sameaccount;
 
     @FXML
     private Button thourteenLettersW;
@@ -75,19 +82,56 @@ public class Controller {
     private Button htmlButton;
 
     @FXML
+    private Button five;
+
+    @FXML
     private Button wildsymbol;
-
-    @FXML
-    private Button usPhone;
-
-    @FXML
-    private Button thouthadnSpace;
 
     @FXML
     private Button ukPhone;
 
     @FXML
+    private Button canPhone;
+
+    @FXML
+    private Button six;
+
+    @FXML
+    private Button one;
+
+    @FXML
+    private Button visacard;
+
+    @FXML
     private CheckBox randomizedLetters;
+
+    @FXML
+    private Button correctemail;
+
+    @FXML
+    private Button americanexpress;
+
+    @FXML
+    private Button specialemail;
+
+    @FXML
+    private Button incorrectemail;
+
+    @FXML
+    private TextField showfield;
+
+    @FXML
+    private Button fifteenNumberSpace;
+
+    @FXML
+    private Button usPhone;
+
+    @FXML
+    private Button populardomain;
+
+    @FXML
+    private Button thouthadnSpace;
+
 
     @FXML
     void initialize() {
@@ -95,18 +139,20 @@ public class Controller {
         TextGenerate text = new TextGenerate();
         PhoneAndCards phoneAndCards = new PhoneAndCards();
         Letters letters = new Letters();
+        Emails emails = new Emails();
+        DateAndTime dateAndTime = new DateAndTime();
 
 
-         countLetters.valueProperty().addListener(new ChangeListener<Number>() {
+        countLetters.valueProperty().addListener(new ChangeListener<Number>() {
 
-             @Override
-             public void changed(ObservableValue<? extends Number> observable, //
-                                 Number oldValue, Number newValue) {
-                 int b;
-                 b = (int) Math.round((Double) newValue);
-                 showfield.setText(letters.generateSymbol(b));
-             }
-         });
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, //
+                                Number oldValue, Number newValue) {
+                int b;
+                b = (int) Math.round((Double) newValue);
+                showfield.setText(letters.generateSymbol(b));
+            }
+        });
 
         double countletters = countLetters.getValue();
         System.out.println(countletters);
@@ -119,90 +165,372 @@ public class Controller {
 //        });
 
         fifteenLettersW.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(text.generateSymbol(15));
             }
         });
-         thourteenLettersW.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+        thourteenLettersW.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(TextGenerate.generateSymbol(30));
             }
         });
         thouthadnLettersW.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(TextGenerate.generateSymbol(1024));
             }
         });
         wildsymbol.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(TextGenerate.wildSymbol());
             }
         });
         //FifteenLetters
         //sixtyfourlettersW
         thouthadnSpace.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(TextGenerate.generateSessionKey(1024));
             }
         });
         //htmlButton
         fifteenNumbers.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(text.generateNumbers(15));
             }
         });
         thouthadNumbers.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(text.generateNumbers(1024));
             }
         });
         fifteenNumberSpace.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(text.generateNumbersWithSpaces(15));
             }
         });
         //sqlQueryButton
 
         ukPhone.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(phoneAndCards.ukPhone());
             }
         });
         gmPhone.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(phoneAndCards.germanPhone());
             }
         });
         canPhone.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(phoneAndCards.canadaPhone());
             }
         });
         usPhone.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(phoneAndCards.usaPhone());
             }
         });
         visacard.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(phoneAndCards.visaCard());
             }
         });
         mastercard.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(phoneAndCards.masterCard());
             }
         });
         discovercard.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(phoneAndCards.discoverCard());
             }
         });
         americanexpress.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 showfield.setText(phoneAndCards.amExpressCard());
             }
         });
+
+        correctemail.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                showfield.setText(emails.correctEmail());
+            }
+        });
+
+        populardomain.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                showfield.setText(emails.popularDomain());
+            }
+        });
+
+        sameaccount.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                showfield.setText(emails.sameaccount());
+            }
+        });
+
+        numberiemail.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                showfield.setText(emails.numbersInEmail());
+            }
+        });
+
+        specialemail.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                showfield.setText(emails.specialmail());
+            }
+        });
+
+        incorrectemail.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                showfield.setText(emails.incorrectEmail());
+            }
+        });
+
+        StringConverter<LocalDate> converter1 = new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter =
+                    DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        };
+
+        date.setConverter(converter1);
+        date.setPromptText("MM/dd/yyyy");
+
+        StringConverter<LocalDate> converter2 = new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter =
+                    DateTimeFormatter.ofPattern("MM-dd-yyyy");
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        };
+
+        StringConverter<LocalDate> converter3 = new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter =
+                    DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        };
+
+        StringConverter<LocalDate> converter4 = new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter =
+                    DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        };
+
+        StringConverter<LocalDate> converter5 = new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter =
+                    DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        };
+
+        StringConverter<LocalDate> converter6 = new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter =
+                    DateTimeFormatter.ofPattern("MM.dd.yyyy");
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    String n = dateFormatter.format(date);
+                    return n;
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        };
+
+        one.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                date.setConverter(converter1);
+                date.setPromptText("MM/dd/yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.US);
+                String formattedValue = (date.getValue()).format(formatter);
+                showfield.setText(formattedValue);
+            }
+        });
+
+        two.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                date.setConverter(converter2);
+                date.setPromptText("MM-dd-yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy", Locale.US);
+                String formattedValue = (date.getValue()).format(formatter);
+                showfield.setText(formattedValue);
+            }
+        });
+
+        three.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                date.setConverter(converter3);
+                date.setPromptText("dd/MM/yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.US);
+                String formattedValue = (date.getValue()).format(formatter);
+                showfield.setText(formattedValue);
+            }
+        });
+
+        four.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                date.setConverter(converter4);
+                date.setPromptText("dd-MM-yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.US);
+                String formattedValue = (date.getValue()).format(formatter);
+                showfield.setText(formattedValue);
+            }
+        });
+
+        five.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                date.setConverter(converter5);
+                date.setPromptText("dd.MM.yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy", Locale.US);
+                String formattedValue = (date.getValue()).format(formatter);
+                showfield.setText(formattedValue);
+            }
+        });
+
+        six.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                date.setConverter(converter6);
+                date.setPromptText("MM.dd.yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM.dd.yyyy", Locale.US);
+                String formattedValue = (date.getValue()).format(formatter);
+                showfield.setText(formattedValue);
+            }
+        });
+
+        date.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                LocalDate date1 = date.getValue();
+                writeMessage(date1);
+            }
+        });
+        date.setValue(dateAndTime.NOW_LOCAL_DATE());
     }
+    private void writeMessage(LocalDate msg)
+    {
+        showfield.setText(String.valueOf(msg));
+    }
+
 }
 

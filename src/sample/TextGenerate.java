@@ -44,7 +44,7 @@ public class TextGenerate {
 
         for (int i=0; i<length; i++) //12
             result = result + alphabet.charAt(r.nextInt(n)); //13
-        System.out.println(result);
+        //System.out.println(result);
         return result;
     }
     public static String generateSymbol(int length){
@@ -57,7 +57,7 @@ public class TextGenerate {
 
         for (int i=0; i<length; i++) //12
             result = result + alphabet.charAt(r.nextInt(n)); //13
-        System.out.println(result);
+        //System.out.println(result);
         return result;
     }
     public static String wildSymbol(){
@@ -70,7 +70,7 @@ public class TextGenerate {
 
         for (int i=0; i<alphabet.length(); i++) //12
             result = result + alphabet.charAt(r.nextInt(n)); //13
-        System.out.println(result);
+       // System.out.println(result);
         return result;
     }
     public static String symbolWithSpaces(int length){
@@ -83,7 +83,7 @@ public class TextGenerate {
 
         for (int i=0; i<length; i++) //12
             result = result + alphabet.charAt(r.nextInt(n)); //13
-        System.out.println(result);
+        //System.out.println(result);
         return result;
     }
     public static String generateNumbers(int length){
@@ -96,7 +96,7 @@ public class TextGenerate {
 
         for (int i=0; i<length; i++) //12
             result = result + alphabet.charAt(r.nextInt(n)); //13
-        System.out.println(result);
+        //System.out.println(result);
         return result;
     }
     public static String generateNumbersWithSpaces(int length){
@@ -109,7 +109,7 @@ public class TextGenerate {
 
         for (int i=0; i<length; i++) //12
             result = result + alphabet.charAt(r.nextInt(n)); //13
-        System.out.println(result);
+        //System.out.println(result);
         return result;
     }
 }
