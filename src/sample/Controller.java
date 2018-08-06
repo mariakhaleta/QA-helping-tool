@@ -9,20 +9,39 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.StringConverter;
 
 public class Controller {
+
+    TextGenerate text = new TextGenerate();
+    PhoneAndCards phoneAndCards = new PhoneAndCards();
+    Letters letters = new Letters();
+    Emails emails = new Emails();
+    DateAndTime dateAndTime = new DateAndTime();
+
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
+
+    @FXML
+    private TextField countOfLetter;
+
+    @FXML
+    private ImageView logo;
 
     @FXML
     private DatePicker date;
@@ -38,6 +57,15 @@ public class Controller {
 
     @FXML
     private Button thouthadNumbers;
+
+    @FXML
+    private Tab quickSymbol;
+
+    @FXML
+    private Tab numbers;
+
+    @FXML
+    private Tab phones;
 
     @FXML
     private Button sixtyfourlettersW;
@@ -56,6 +84,12 @@ public class Controller {
 
     @FXML
     private Button thouthadnLettersW;
+
+    @FXML
+    private TextField writecoutletters;
+
+    @FXML
+    private Tab email;
 
     @FXML
     private Button gmPhone;
@@ -85,6 +119,9 @@ public class Controller {
     private Button five;
 
     @FXML
+    private Tab letter;
+
+    @FXML
     private Button wildsymbol;
 
     @FXML
@@ -92,6 +129,12 @@ public class Controller {
 
     @FXML
     private Button canPhone;
+
+    @FXML
+    private CheckBox letttersOnly;
+
+    @FXML
+    private Tab dateAndtime;
 
     @FXML
     private Button six;
@@ -106,6 +149,9 @@ public class Controller {
     private CheckBox randomizedLetters;
 
     @FXML
+    private CheckBox spaceBetweenLetters;
+
+    @FXML
     private Button correctemail;
 
     @FXML
@@ -116,6 +162,9 @@ public class Controller {
 
     @FXML
     private Button incorrectemail;
+
+    @FXML
+    private CheckBox upperCaseLetters;
 
     @FXML
     private TextField showfield;
@@ -132,16 +181,8 @@ public class Controller {
     @FXML
     private Button thouthadnSpace;
 
-
     @FXML
     void initialize() {
-
-        TextGenerate text = new TextGenerate();
-        PhoneAndCards phoneAndCards = new PhoneAndCards();
-        Letters letters = new Letters();
-        Emails emails = new Emails();
-        DateAndTime dateAndTime = new DateAndTime();
-
 
         countLetters.valueProperty().addListener(new ChangeListener<Number>() {
 
@@ -156,6 +197,9 @@ public class Controller {
 
         double countletters = countLetters.getValue();
         System.out.println(countletters);
+//        String writecounts = writecoutletters.getText();
+//        int writeintcounts = Integer.parseInt(writecounts);
+//        System.out.println(writeintcounts);
 
 //        randomizedLetters.selectedProperty().addListener(new ChangeListener<Boolean>() {
 //            public void changed(ObservableValue<? extends Boolean> ov,
@@ -163,6 +207,7 @@ public class Controller {
 //                //showfield.setText(letters.generateSymbol(b));
 //            }
 //        });
+
 
         fifteenLettersW.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -526,11 +571,65 @@ public class Controller {
             }
         });
         date.setValue(dateAndTime.NOW_LOCAL_DATE());
+
     }
+
     private void writeMessage(LocalDate msg)
     {
         showfield.setText(String.valueOf(msg));
     }
 
+    public void CheckBoxesLetters(ActionEvent event){
+
+        if (randomizedLetters.isSelected()){
+            showfield.setText(letters.random(20));
+        }
+        if(spaceBetweenLetters.isSelected()){
+            showfield.setText(letters.space(20));
+        }
+        if(upperCaseLetters.isSelected()){
+            showfield.setText(letters.upperCase(20));
+        }
+        if(letttersOnly.isSelected()){
+            showfield.setText(letters.generateSymbol(20));
+        }
+        if(randomizedLetters.isSelected()&&spaceBetweenLetters.isSelected()){
+            showfield.setText(letters.symbolWithSpaces(20));
+        }
+        if(randomizedLetters.isSelected() && upperCaseLetters.isSelected()){
+            showfield.setText(letters.upperCaseRandom(20));
+        }
+        if(randomizedLetters.isSelected() && letttersOnly.isSelected()){
+            showfield.setText(letters.symbolWithSpaces(20));
+        }
+        if(spaceBetweenLetters.isSelected() && upperCaseLetters.isSelected()){
+            showfield.setText(letters.upperCaseSpace(20));
+        }
+        if(spaceBetweenLetters.isSelected() && letttersOnly.isSelected()){
+            showfield.setText(letters.upperCaseSpace(20));
+        }
+         if(randomizedLetters.isSelected() && spaceBetweenLetters.isSelected() && upperCaseLetters.isSelected()){
+            showfield.setText(letters.upperCaseRandomSpace(20));
+        }
+        if(randomizedLetters.isSelected() && spaceBetweenLetters.isSelected() && letttersOnly.isSelected()){
+            showfield.setText(letters.symbolWithSpacesOnlyLetters(20));
+        }
+        if(randomizedLetters.isSelected() && upperCaseLetters.isSelected() && letttersOnly.isSelected()){
+            showfield.setText(letters.upperCaseRandomSpace(20));
+        }
+        if(spaceBetweenLetters.isSelected() && upperCaseLetters.isSelected() && letttersOnly.isSelected()){
+            showfield.setText(letters.upperCaseSpace(20));
+        }
+         if (randomizedLetters.isSelected() && spaceBetweenLetters.isSelected() && upperCaseLetters.isSelected() && letttersOnly.isSelected()) {
+            showfield.setText(letters.symbolWithSpacesOnlyLetters(20));
+        }
+
+    }
+
+    public void CheckBoxesNumbers(ActionEvent event){
+
+
+    }
 }
+
 

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.web.*?>
 <?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -17,7 +20,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" prefHeight="500.0" prefWidth="640.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" prefHeight="659.0" prefWidth="640.0" style="-fx-background-color: ac3e41;" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -27,14 +30,19 @@
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
    </rowConstraints>
    <children>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.rowIndex="1" />
-      <TabPane prefHeight="359.0" prefWidth="605.0" tabClosingPolicy="UNAVAILABLE" GridPane.rowIndex="1">
+      <TabPane prefHeight="355.0" prefWidth="579.0" tabClosingPolicy="UNAVAILABLE" GridPane.rowIndex="1">
         <tabs>
-          <Tab text="Letters">
+          <Tab fx:id="letters" style="-fx-background-radius: 3;" text="Letters">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="605.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="605.0" style="-fx-background-color: ffff;">
                      <children>
                         <Label layoutX="85.0" layoutY="51.0" text="Count of letters to Generate" />
                         <Label layoutX="86.0" layoutY="103.0" text="Randomized" />
@@ -42,34 +50,38 @@
                         <Label layoutX="85.0" layoutY="155.0" text="UpperCase letters" />
                         <Label layoutX="87.0" layoutY="185.0" text="Letters only" />
                         <Label layoutX="84.0" layoutY="263.0" text="Language selector" />
-                        <CheckBox fx:id="randomizedLetters" layoutX="348.0" layoutY="102.0" mnemonicParsing="false" />
-                        <CheckBox layoutX="348.0" layoutY="128.0" mnemonicParsing="false" />
-                        <CheckBox layoutX="348.0" layoutY="154.0" mnemonicParsing="false" />
-                        <CheckBox layoutX="348.0" layoutY="184.0" mnemonicParsing="false" />
+                        <CheckBox fx:id="randomizedLetters" layoutX="348.0" layoutY="102.0" mnemonicParsing="false" onAction="#CheckBoxesLetters" />
+                        <CheckBox fx:id="spaceBetweenLetters" layoutX="348.0" layoutY="128.0" mnemonicParsing="false" onAction="#CheckBoxesLetters" />
+                        <CheckBox fx:id="upperCaseLetters" layoutX="348.0" layoutY="154.0" mnemonicParsing="false" onAction="#CheckBoxesLetters" />
+                        <CheckBox fx:id="letttersOnly" layoutX="348.0" layoutY="184.0" mnemonicParsing="false" onAction="#CheckBoxesLetters" />
                         <ComboBox id="language" layoutX="273.0" layoutY="258.0" prefHeight="27.0" prefWidth="97.0" promptText="English" />
-                        <Slider fx:id="countLetters" layoutX="302.0" layoutY="49.0" minorTickCount="10" prefHeight="33.0" prefWidth="166.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="64.0" />
+                        <Slider fx:id="countLetters" layoutX="265.0" layoutY="43.0" minorTickCount="10" prefHeight="33.0" prefWidth="166.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="64.0" />
+                        <TextField fx:id="writecoutletters" layoutX="443.0" layoutY="37.0" prefHeight="29.0" prefWidth="45.0" />
+                        <Button layoutX="497.0" layoutY="38.0" mnemonicParsing="false" text="Set" />
+                        <Label layoutX="425.0" layoutY="94.0" text="Set a number of letters &#10;to generete" />
+
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Numbers">
+          <Tab fx:id="numbers" style="-fx-background-radius: 3;" text="Numbers">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: ffff;">
                      <children>
                         <Label layoutX="97.0" layoutY="62.0" text="Count of numbers to Generate" />
                         <Label layoutX="97.0" layoutY="92.0" text="Randomized" />
                         <Label layoutX="96.0" layoutY="125.0" text="Space between numbers" />
-                        <Label layoutX="100.0" layoutY="164.0" text="Numbers only" />
-                        <CheckBox layoutX="305.0" layoutY="91.0" mnemonicParsing="false" />
-                        <CheckBox layoutX="305.0" layoutY="164.0" mnemonicParsing="false" />
-                        <CheckBox layoutX="305.0" layoutY="124.0" mnemonicParsing="false" />
+                        <Label layoutX="97.0" layoutY="165.0" text="Numbers only" />
+                        <CheckBox fx:id="randomizedNumber" layoutX="305.0" layoutY="91.0" mnemonicParsing="false" onAction="#CheckBoxesNumbers" />
+                        <CheckBox fx:id="numberOnly" layoutX="305.0" layoutY="164.0" mnemonicParsing="false" onAction="#CheckBoxesNumbers" />
+                        <CheckBox fx:id="spaceBetweenNumber" layoutX="305.0" layoutY="124.0" mnemonicParsing="false" onAction="#CheckBoxesNumbers" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Quick Symbols">
+            <Tab fx:id="quickSymbol" text="Quick Symbols">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: ffff;">
                      <children>
                         <Button fx:id="fifteenLettersW" layoutX="114.0" layoutY="47.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="114.0" text="15 letters &#10;without spaces" textAlignment="CENTER" />
                         <Button fx:id="FifteenLetters" layoutX="244.0" layoutY="48.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="113.0" text="15 symbols &#10;with spaces" textAlignment="CENTER" />
@@ -87,9 +99,9 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Phone, Cards">
+            <Tab fx:id="phoneAndCards" text="Phone, Cards">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: ffff;">
                      <children>
                         <Button fx:id="ukPhone" layoutX="109.0" layoutY="26.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="157.0" text="UK phone &#10;number &#10;Exampels" textAlignment="CENTER" />
                         <Button fx:id="gmPhone" layoutX="109.0" layoutY="93.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="157.0" text="German phone &#10;number &#10;Exampels" textAlignment="CENTER" />
@@ -103,26 +115,26 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Emails">
+            <Tab fx:id="emails" text="Emails">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: ffff;">
                      <children>
-                        <Button fx:id="correctemail" layoutX="79.0" layoutY="47.0" mnemonicParsing="false" text="Сorrect email &#10;Example" textAlignment="CENTER" />
-                        <Button fx:id="numberiemail" layoutX="215.0" layoutY="121.0" mnemonicParsing="false" text="Numbers in email&#10;Examples" textAlignment="CENTER" />
-                        <Button fx:id="populardomain" layoutX="214.0" layoutY="47.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="128.0" text="Popular domain&#10;name&#10;Examples" textAlignment="CENTER" />
-                        <Button fx:id="incorrectemail" layoutX="376.0" layoutY="47.0" mnemonicParsing="false" text="Incorrect email&#10;Examples" textAlignment="CENTER" />
-                        <Button fx:id="specialemail" layoutX="215.0" layoutY="246.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="127.0" text="Special email&#10;Examples" textAlignment="CENTER" />
-                        <Button fx:id="sameaccount" layoutX="214.0" layoutY="174.0" mnemonicParsing="false" text="Email &#10;Examples to &#10;the same account" textAlignment="CENTER" />
+                        <Button fx:id="correctemail" layoutX="79.0" layoutY="47.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="105.0" text="Сorrect email &#10;Example" textAlignment="CENTER" />
+                        <Button fx:id="numberiemail" layoutX="230.0" layoutY="117.0" mnemonicParsing="false" text="Numbers in email&#10;Examples" textAlignment="CENTER" />
+                        <Button fx:id="populardomain" layoutX="228.0" layoutY="47.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="128.0" text="Popular domain&#10;name&#10;Examples" textAlignment="CENTER" />
+                        <Button fx:id="incorrectemail" layoutX="376.0" layoutY="47.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="110.0" text="Incorrect email&#10;Examples" textAlignment="CENTER" />
+                        <Button fx:id="specialemail" layoutX="230.0" layoutY="246.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="127.0" text="Special email&#10;Examples" textAlignment="CENTER" />
+                        <Button fx:id="sameaccount" layoutX="229.0" layoutY="174.0" mnemonicParsing="false" text="Email &#10;Examples to &#10;the same account" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Date&amp;Time">
+            <Tab fx:id="dateAndTime" text="Date&amp;Time">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: ffff;">
                      <children>
-                        <DatePicker fx:id="date" layoutX="50.0" layoutY="98.0" showWeekNumbers="true" />
-                        <Button fx:id="one" layoutX="343.0" layoutY="77.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="99.0" text="MM/dd/yyyy" />
+                        <DatePicker fx:id="date" layoutX="69.0" layoutY="74.0" prefHeight="27.0" prefWidth="203.0" showWeekNumbers="true" />
+                        <Button fx:id="one" layoutX="343.0" layoutY="74.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="99.0" text="MM/dd/yyyy" />
                         <Button fx:id="six" layoutX="454.0" layoutY="149.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="97.0" text="MM.dd.yyyy" />
                         <Button fx:id="two" layoutX="343.0" layoutY="111.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="100.0" text="MM-dd-yyyy" />
                         <Button fx:id="five" layoutX="453.0" layoutY="111.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="98.0" text="dd.MM.yyyy" />
@@ -136,6 +148,16 @@
             </Tab>
         </tabs>
       </TabPane>
-      <TextField fx:id="showfield" text="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" />
+      <Pane prefHeight="179.0" prefWidth="605.0">
+         <children>
+            <TextField fx:id="showfield" layoutY="138.0" prefHeight="27.0" prefWidth="519.0" style="-fx-border-radius: 10;" />
+            <Button layoutX="519.0" layoutY="138.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="85.0" style="-fx-background-radius: 8;" text="Button" />
+            <ImageView fx:id="logo" fitHeight="136.0" fitWidth="228.0" layoutX="377.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@1200px-Victorinox_Logo.svg.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </GridPane>
