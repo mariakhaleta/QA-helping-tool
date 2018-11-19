@@ -5,9 +5,9 @@ import java.util.Random;
 
 public class TextGenerate {
 
-    public String numbers(){
+    public static String numbers() {
         int[] numbers = new int[15];
-        for (int i =0; i < numbers.length; i++) {
+        for (int i = 0; i < numbers.length; i++) {
             numbers[i] = (int) (Math.random() * 10);
         }
         String n;
@@ -34,7 +34,7 @@ public class TextGenerate {
 
     }
 
-    public static String generateSessionKey(int length){
+    public static String generateSessionKey(int length) {
         String alphabet =
                 new String("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "); //9
         int n = alphabet.length(); //10
@@ -42,12 +42,13 @@ public class TextGenerate {
         String result = new String();
         Random r = new Random(); //11
 
-        for (int i=0; i<length; i++) //12
+        for (int i = 0; i < length; i++) //12
             result = result + alphabet.charAt(r.nextInt(n)); //13
         //System.out.println(result);
         return result;
     }
-    public static String generateSymbol(int length){
+
+    public static String generateSymbol(int length) {
         String alphabet =
                 new String("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"); //9
         int n = alphabet.length(); //10
@@ -55,12 +56,13 @@ public class TextGenerate {
         String result = new String();
         Random r = new Random(); //11
 
-        for (int i=0; i<length; i++) //12
+        for (int i = 0; i < length; i++) //12
             result = result + alphabet.charAt(r.nextInt(n)); //13
         //System.out.println(result);
         return result;
     }
-    public static String wildSymbol(){
+
+    public static String wildSymbol() {
         String alphabet =
                 new String("-:;'\'></"); //9
         int n = alphabet.length(); //10
@@ -68,12 +70,13 @@ public class TextGenerate {
         String result = new String();
         Random r = new Random(); //11
 
-        for (int i=0; i<alphabet.length(); i++) //12
+        for (int i = 0; i < alphabet.length(); i++) //12
             result = result + alphabet.charAt(r.nextInt(n)); //13
-       // System.out.println(result);
+        // System.out.println(result);
         return result;
     }
-    public static String symbolWithSpaces(int length){
+
+    public static String symbolWithSpaces(int length) {
         String alphabet =
                 new String(" A B C D E F G H I JKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "); //9
         int n = alphabet.length(); //10
@@ -81,12 +84,13 @@ public class TextGenerate {
         String result = new String();
         Random r = new Random(); //11
 
-        for (int i=0; i<length; i++) //12
+        for (int i = 0; i < length; i++) //12
             result = result + alphabet.charAt(r.nextInt(n)); //13
         //System.out.println(result);
         return result;
     }
-    public static String generateNumbers(int length){
+
+    public static String generateNumbers(int length) {
         String alphabet =
                 new String("0123456789"); //9
         int n = alphabet.length(); //10
@@ -94,12 +98,13 @@ public class TextGenerate {
         String result = new String();
         Random r = new Random(); //11
 
-        for (int i=0; i<length; i++) //12
+        for (int i = 0; i < length; i++) //12
             result = result + alphabet.charAt(r.nextInt(n)); //13
         //System.out.println(result);
         return result;
     }
-    public static String generateNumbersWithSpaces(int length){
+
+    public static String generateNumbersWithSpaces(int length) {
         String alphabet =
                 new String(" 0 1 2 3 4 5 6 7 8 9 "); //9
         int n = alphabet.length(); //10
@@ -107,7 +112,7 @@ public class TextGenerate {
         String result = new String();
         Random r = new Random(); //11
 
-        for (int i=0; i<length; i++) //12
+        for (int i = 0; i < length; i++) //12
             result = result + alphabet.charAt(r.nextInt(n)); //13
         //System.out.println(result);
         return result;

@@ -1,5 +1,6 @@
 package sample;
 
+import java.awt.event.ActionListener;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -25,23 +26,17 @@ import javafx.util.StringConverter;
 
 public class Controller {
 
+
     TextGenerate text = new TextGenerate();
+    @FXML
     PhoneAndCards phoneAndCards = new PhoneAndCards();
+    @FXML
     Letters letters = new Letters();
+    @FXML
     Emails emails = new Emails();
+    @FXML
     DateAndTime dateAndTime = new DateAndTime();
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private TextField countOfLetter;
-
-    @FXML
-    private ImageView logo;
 
     @FXML
     private DatePicker date;
@@ -50,58 +45,100 @@ public class Controller {
     private Button fifteenLettersW;
 
     @FXML
+    private CheckBox numberOnly;
+
+    @FXML
+    private Tab QuickSymbol;
+
+    @FXML
+    private Button mastercard;
+
+    @FXML
+    private Button three;
+
+    @FXML
+    private Button thouthadnLettersW;
+
+    @FXML
+    private Button gmPhone;
+
+    @FXML
+    private Button copyButton;
+
+    @FXML
+    private CheckBox spaceBetweenNumber;
+
+    @FXML
+    private Button four;
+
+    @FXML
+    private Button fifteenNumbers;
+
+    @FXML
+    private ImageView logo;
+
+    @FXML
+    private Tab Emails;
+
+    @FXML
+    private Button htmlButton;
+
+    @FXML
+    private Button set;
+
+    @FXML
+    private Button five;
+
+    @FXML
+    private Button ukPhone;
+
+    @FXML
+    private CheckBox letttersOnly;
+
+    @FXML
+    private Tab Letters;
+
+    @FXML
+    private Tab DateAndTime;
+
+    @FXML
+    private Button visacard;
+
+    @FXML
+    private CheckBox upperCaseLetters;
+
+    @FXML
+    private Button fifteenNumberSpace;
+
+    @FXML
     private Button FifteenLetters;
 
     @FXML
     private Button numberiemail;
 
     @FXML
+    private CheckBox randomizedNumber;
+
+    @FXML
     private Button thouthadNumbers;
-
-    @FXML
-    private Tab quickSymbol;
-
-    @FXML
-    private Tab numbers;
-
-    @FXML
-    private Tab phones;
 
     @FXML
     private Button sixtyfourlettersW;
 
     @FXML
-    private Button mastercard;
+    private Tab PhoneAndCards;
 
     @FXML
     private Button two;
 
     @FXML
-    private Button three;
-
-    @FXML
     private Button discovercard;
 
     @FXML
-    private Button thouthadnLettersW;
-
-    @FXML
-    private TextField writecoutletters;
-
-    @FXML
-    private Tab email;
-
-    @FXML
-    private Button gmPhone;
-
-    @FXML
-    private Button four;
+    private Tab Numbers;
 
     @FXML
     private Slider countLetters;
-
-    @FXML
-    private Button fifteenNumbers;
 
     @FXML
     private Button sqlQueryButton;
@@ -113,37 +150,16 @@ public class Controller {
     private Button thourteenLettersW;
 
     @FXML
-    private Button htmlButton;
-
-    @FXML
-    private Button five;
-
-    @FXML
-    private Tab letter;
-
-    @FXML
     private Button wildsymbol;
 
     @FXML
-    private Button ukPhone;
-
-    @FXML
     private Button canPhone;
-
-    @FXML
-    private CheckBox letttersOnly;
-
-    @FXML
-    private Tab dateAndtime;
 
     @FXML
     private Button six;
 
     @FXML
     private Button one;
-
-    @FXML
-    private Button visacard;
 
     @FXML
     private CheckBox randomizedLetters;
@@ -164,13 +180,10 @@ public class Controller {
     private Button incorrectemail;
 
     @FXML
-    private CheckBox upperCaseLetters;
-
-    @FXML
     private TextField showfield;
 
     @FXML
-    private Button fifteenNumberSpace;
+    private TextField writecoutletters;
 
     @FXML
     private Button usPhone;
@@ -181,6 +194,7 @@ public class Controller {
     @FXML
     private Button thouthadnSpace;
 
+    Integer setButton;
     @FXML
     void initialize() {
 
@@ -572,6 +586,26 @@ public class Controller {
         });
         date.setValue(dateAndTime.NOW_LOCAL_DATE());
 
+        set.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+               // System.out.println(writecoutletters.getText());
+                setButton = Integer.valueOf(writecoutletters.getText());
+                showfield.setText(letters.generateSymbol(setButton));
+                //System.out.println(setButton);
+            }
+    });
+
+        copyButton.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                showfield.copy();
+            }
+        });
     }
 
     private void writeMessage(LocalDate msg)
@@ -581,54 +615,61 @@ public class Controller {
 
     public void CheckBoxesLetters(ActionEvent event){
 
+        //System.out.println(setButton);
+
+        Integer setAdd;
+        setAdd = setButton;
+
         if (randomizedLetters.isSelected()){
-            showfield.setText(letters.random(20));
+            showfield.setText(letters.random(setAdd));
         }
         if(spaceBetweenLetters.isSelected()){
-            showfield.setText(letters.space(20));
+            showfield.setText(letters.space(setAdd));
         }
         if(upperCaseLetters.isSelected()){
-            showfield.setText(letters.upperCase(20));
+            showfield.setText(letters.upperCase(setAdd));
         }
         if(letttersOnly.isSelected()){
-            showfield.setText(letters.generateSymbol(20));
+            showfield.setText(letters.generateSymbol(setAdd));
         }
         if(randomizedLetters.isSelected()&&spaceBetweenLetters.isSelected()){
-            showfield.setText(letters.symbolWithSpaces(20));
+            showfield.setText(letters.symbolWithSpaces(setAdd));
         }
         if(randomizedLetters.isSelected() && upperCaseLetters.isSelected()){
-            showfield.setText(letters.upperCaseRandom(20));
+            showfield.setText(letters.upperCaseRandom(setAdd));
         }
         if(randomizedLetters.isSelected() && letttersOnly.isSelected()){
-            showfield.setText(letters.symbolWithSpaces(20));
+            showfield.setText(letters.symbolWithSpaces(setAdd));
         }
         if(spaceBetweenLetters.isSelected() && upperCaseLetters.isSelected()){
-            showfield.setText(letters.upperCaseSpace(20));
+            showfield.setText(letters.upperCaseSpace(setAdd));
         }
         if(spaceBetweenLetters.isSelected() && letttersOnly.isSelected()){
-            showfield.setText(letters.upperCaseSpace(20));
+            showfield.setText(letters.upperCaseSpace(setAdd));
         }
          if(randomizedLetters.isSelected() && spaceBetweenLetters.isSelected() && upperCaseLetters.isSelected()){
-            showfield.setText(letters.upperCaseRandomSpace(20));
+            showfield.setText(letters.upperCaseRandomSpace(setAdd));
         }
         if(randomizedLetters.isSelected() && spaceBetweenLetters.isSelected() && letttersOnly.isSelected()){
-            showfield.setText(letters.symbolWithSpacesOnlyLetters(20));
+            showfield.setText(letters.symbolWithSpacesOnlyLetters(setAdd));
         }
         if(randomizedLetters.isSelected() && upperCaseLetters.isSelected() && letttersOnly.isSelected()){
-            showfield.setText(letters.upperCaseRandomSpace(20));
+            showfield.setText(letters.upperCaseRandomSpace(setAdd));
         }
         if(spaceBetweenLetters.isSelected() && upperCaseLetters.isSelected() && letttersOnly.isSelected()){
-            showfield.setText(letters.upperCaseSpace(20));
+            showfield.setText(letters.upperCaseSpace(setAdd));
         }
          if (randomizedLetters.isSelected() && spaceBetweenLetters.isSelected() && upperCaseLetters.isSelected() && letttersOnly.isSelected()) {
-            showfield.setText(letters.symbolWithSpacesOnlyLetters(20));
+            showfield.setText(letters.symbolWithSpacesOnlyLetters(setAdd));
         }
 
     }
 
     public void CheckBoxesNumbers(ActionEvent event){
+    }
 
-
+   public void countOfLettersType(ActionEvent event) {
+        System.out.println(writecoutletters.getText());
     }
 }
 
